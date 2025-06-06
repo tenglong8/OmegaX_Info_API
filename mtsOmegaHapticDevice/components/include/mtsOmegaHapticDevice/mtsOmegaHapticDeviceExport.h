@@ -20,6 +20,6 @@ http://www.cisst.org/cisst/license.txt.
 
 // include common defines
 #include <cisstCommon/cmnExportMacros.h>
-
+#include "Eigen/Eigen"
 // avoid impact on other modules
 #undef CISST_THIS_LIBRARY_AS_DLL

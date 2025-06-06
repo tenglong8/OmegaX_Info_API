@@ -11,6 +11,7 @@
 #include <cisstParameterTypes/prmVelocityCartesianSet.h>
 #include <cisstParameterTypes/prmVelocityJointSet.h>
 #include <cisstParameterTypes/prmConfigurationJoint.h>
+#include "Eigen/Eigen"
 //#include <mtsOmegaHapticDeviceExport.h>
 
 class mtsTeleoperation : public mtsTaskPeriodic
@@ -36,10 +37,18 @@ protected:
     mtsDouble        timestamp;
     mtsFunctionVoid  crtk_disable;
     int deviceId;
-    double masterX;
-    double masterY;
-    double masterZ;
+    Eigen::Vector3d force;
+    Eigen::Vector3d torque;
+    double masterX, masterY, masterZ;
+    double masterLinearVelocityX, masterLinearVelocityY, masterLinearVelocityZ;
+    double masterAngularVelocityX, masterAngularVelocityY, masterAngularVelocityZ;
     double masterRotation[3][3] = {};
+    bool buttonEngaged;
+    struct{
+   double masterX;
+   double masterY;
+   double masterZ;
+    } pos;
 };
 
 CMN_DECLARE_SERVICES_INSTANTIATION(mtsTeleoperation);
